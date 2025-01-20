@@ -33,6 +33,9 @@ public class Main {
     private JButton[] btnLifePlusLT;
     private JButton[] btnResetLife;
     private JButton btnResetAllLife;
+    private JButton btnCommander;
+    private JButton btnStandard;
+
 
     /**
      * Launch the application.
@@ -62,6 +65,10 @@ public class Main {
      * Initialize the contents of the frame.
      */
     private void initialize() {
+
+        JLabel lblStartingLife = new JLabel();
+        lblStartingLife.setText("40");
+
         frame = new JFrame();
         frame.getContentPane().setForeground(new Color(0, 255, 0));
         frame.getContentPane().setBackground(new Color(0, 0, 0));
@@ -108,7 +115,7 @@ public class Main {
         panelLifeTracker.setVisible(false);
 
 
-        //Main code
+        //panelMain code
         JLabel lblSelectPlayers = new JLabel("Select number of players:");
         lblSelectPlayers.setHorizontalAlignment(SwingConstants.CENTER);
         lblSelectPlayers.setForeground(Color.GREEN);
@@ -125,16 +132,16 @@ public class Main {
         panelMain.setLayout(null);
 
         JButton btnExit = new JButton("Exit");
-        btnExit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
         btnExit.setForeground(Color.GREEN);
         btnExit.setFont(new Font("Engravers MT", Font.BOLD, 30));
         btnExit.setBackground(Color.BLACK);
         btnExit.setBounds(161, 688, 251, 50);
         panelMain.add(btnExit);
+        btnExit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
 
         txtPlayerNumber = new JTextField();
         txtPlayerNumber.setHorizontalAlignment(SwingConstants.CENTER);
@@ -181,6 +188,11 @@ public class Main {
 
 
         JButton btnContinue = new JButton("Continue");
+        btnContinue.setFont(new Font("Engravers MT", Font.BOLD, 30));
+        btnContinue.setBackground(new Color(0, 0, 0));
+        btnContinue.setForeground(new Color(0, 255, 0));
+        btnContinue.setBounds(573, 688, 251, 50);
+        panelMain.add(btnContinue);
         btnContinue.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 panelMain.setVisible(false);
@@ -189,14 +201,7 @@ public class Main {
             }
         });
 
-
-        btnContinue.setFont(new Font("Engravers MT", Font.BOLD, 30));
-        btnContinue.setBackground(new Color(0, 0, 0));
-        btnContinue.setForeground(new Color(0, 255, 0));
-        btnContinue.setBounds(573, 688, 251, 50);
-        panelMain.add(btnContinue);
-
-        //PlayerNames Panel code
+        //panelPlayerNames code
 
         JButton btnBack = new JButton("Back");
         btnBack.setForeground(Color.GREEN);
@@ -212,81 +217,81 @@ public class Main {
         });
 
         JButton btnExitPN = new JButton("Exit");
-        btnExitPN.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
         btnExitPN.setForeground(Color.GREEN);
         btnExitPN.setFont(new Font("Engravers MT", Font.BOLD, 30));
         btnExitPN.setBackground(Color.BLACK);
         btnExitPN.setBounds(161, 853, 251, 50);
         panelPlayerNames.add(btnExitPN);
-
-        JButton btnLife = new JButton("LIFE");
-        btnLife.addActionListener(new ActionListener() {
+        btnExitPN.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                updateVisibility(playerCount, panelPlayerNames, panelLifeTracker);
+                System.exit(0);
             }
         });
+
+        JButton btnLife = new JButton("LIFE");
         btnLife.setForeground(Color.GREEN);
         btnLife.setFont(new Font("Engravers MT", Font.BOLD, 30));
         btnLife.setBackground(Color.BLACK);
         btnLife.setBounds(161, 791, 251, 50);
         panelPlayerNames.add(btnLife);
-
-        JButton btnGrave = new JButton("GRAVE");
-        btnGrave.addActionListener(new ActionListener() {
+        btnLife.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                updateVisibility(playerCount, panelPlayerNames, panelGraveTracker);
+                updateVisibility(playerCount, panelPlayerNames, panelLifeTracker);
             }
         });
+
+        JButton btnGrave = new JButton("GRAVE");
         btnGrave.setForeground(Color.GREEN);
         btnGrave.setFont(new Font("Engravers MT", Font.BOLD, 30));
         btnGrave.setBackground(Color.BLACK);
         btnGrave.setBounds(573, 791, 251, 50);
         panelPlayerNames.add(btnGrave);
+        btnGrave.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                updateVisibility(playerCount, panelPlayerNames, panelGraveTracker);
+            }
+        });
 
 
         JButton btnLifeGT = new JButton("LIFE");
+        btnLifeGT.setForeground(Color.GREEN);
+        btnLifeGT.setFont(new Font("Engravers MT", Font.BOLD, 30));
+        btnLifeGT.setBackground(Color.BLACK);
+        btnLifeGT.setBounds(367, 853, 251, 50);
+        panelGraveTracker.add(btnLifeGT);
         btnLifeGT.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 panelGraveTracker.setVisible(false);
                 panelLifeTracker.setVisible(true);
             }
         });
-        btnLifeGT.setForeground(Color.GREEN);
-        btnLifeGT.setFont(new Font("Engravers MT", Font.BOLD, 30));
-        btnLifeGT.setBackground(Color.BLACK);
-        btnLifeGT.setBounds(367, 853, 251, 50);
-        panelGraveTracker.add(btnLifeGT);
 
         JButton btnExitGT = new JButton("Exit");
-        btnExitGT.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
         btnExitGT.setForeground(Color.GREEN);
         btnExitGT.setFont(new Font("Engravers MT", Font.BOLD, 30));
         btnExitGT.setBackground(Color.BLACK);
         btnExitGT.setBounds(58, 853, 251, 50);
         panelGraveTracker.add(btnExitGT);
+        btnExitGT.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
 
 
         JButton btnBackGT = new JButton("Back");
-        btnBackGT.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                panelGraveTracker.setVisible(false);
-                panelPlayerNames.setVisible(true);
-            }
-        });
         btnBackGT.setForeground(Color.GREEN);
         btnBackGT.setFont(new Font("Engravers MT", Font.BOLD, 30));
         btnBackGT.setBackground(Color.BLACK);
         btnBackGT.setBounds(676, 853, 251, 50);
         panelGraveTracker.add(btnBackGT);
         panelGraveTracker.setVisible(false);
+        btnBackGT.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                panelGraveTracker.setVisible(false);
+                panelPlayerNames.setVisible(true);
+            }
+        });
 
         //Establishes an array of JTextFields for entering player names.
         txtArray = new JTextField[10];
@@ -301,7 +306,7 @@ public class Main {
         }
 
 
-        //Grave Tracker code
+        //panelGraveTracker code
         //Array to hold all checkBoxes
         checkBoxes = new JCheckBox[8];
         for (int i = 0; i < checkBoxes.length; i++) {
@@ -454,47 +459,46 @@ public class Main {
             });
         }
 
-        //LifeTracker Panel
+        //panelLifeTracker Code
         JButton btnGraveLT = new JButton("GRAVE");
+        btnGraveLT.setForeground(Color.GREEN);
+        btnGraveLT.setFont(new Font("Engravers MT", Font.BOLD, 30));
+        btnGraveLT.setBackground(Color.BLACK);
+        btnGraveLT.setBounds(367, 853, 251, 50);
+        panelLifeTracker.add(btnGraveLT);
         btnGraveLT.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 panelLifeTracker.setVisible(false);
                 panelGraveTracker.setVisible(true);
             }
         });
-        btnGraveLT.setForeground(Color.GREEN);
-        btnGraveLT.setFont(new Font("Engravers MT", Font.BOLD, 30));
-        btnGraveLT.setBackground(Color.BLACK);
-        btnGraveLT.setBounds(367, 853, 251, 50);
-        panelLifeTracker.add(btnGraveLT);
 
         JButton btnExitLT = new JButton("Exit");
-        btnExitLT.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
         btnExitLT.setForeground(Color.GREEN);
         btnExitLT.setFont(new Font("Engravers MT", Font.BOLD, 30));
         btnExitLT.setBackground(Color.BLACK);
         btnExitLT.setBounds(58, 853, 251, 50);
         panelLifeTracker.add(btnExitLT);
+        btnExitLT.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
 
 
         JButton btnBackLT = new JButton("Back");
-        btnBackLT.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                panelLifeTracker.setVisible(false);
-                panelPlayerNames.setVisible(true);
-            }
-        });
         btnBackLT.setForeground(Color.GREEN);
         btnBackLT.setFont(new Font("Engravers MT", Font.BOLD, 30));
         btnBackLT.setBackground(Color.BLACK);
         btnBackLT.setBounds(676, 853, 251, 50);
         panelLifeTracker.add(btnBackLT);
         panelLifeTracker.setVisible(false);
-
+        btnBackLT.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                panelLifeTracker.setVisible(false);
+                panelPlayerNames.setVisible(true);
+            }
+        });
 
         playerLabelsLT = new JLabel[10];
         for (int i = 0; i < playerLabelsLT.length; i++) {
@@ -576,7 +580,7 @@ public class Main {
             int index = i;
             btnResetLife[i].addActionListener(e -> {
                 int creatureCount = Integer.parseInt(lblPlayerLife[index].getText());
-                lblPlayerLife[index].setText("40");
+                lblPlayerLife[index].setText(lblStartingLife.getText());
             });
         }
 
@@ -589,9 +593,47 @@ public class Main {
         panelLifeTracker.add(btnResetAllLife);
         btnResetAllLife.addActionListener(e -> {
             for(JLabel s : lblPlayerLife) {
-                s.setText("40");
+                s.setText(lblStartingLife.getText());
             }
         });
+
+
+
+        btnCommander = new JButton();
+        btnCommander.setFont(new Font("Engravers MT", Font.BOLD, 30));
+        btnCommander.setForeground(Color.GREEN);
+        btnCommander.setBackground(Color.BLACK);
+        btnCommander.setBounds(335, 50, 310, 35);
+        btnCommander.setText("Commander");
+        btnCommander.setVisible(true);
+        panelLifeTracker.add(btnCommander);
+
+            for (int i = 0; i < btnLifePlusLT.length; i++) {
+                btnCommander.addActionListener(e -> {
+                    lblStartingLife.setText("40");
+                    for(JLabel s : lblPlayerLife){
+                        s.setText(lblStartingLife.getText());
+                    }
+                });
+            }
+
+        btnStandard = new JButton();
+        btnStandard.setFont(new Font("Engravers MT", Font.BOLD, 30));
+        btnStandard.setForeground(Color.GREEN);
+        btnStandard.setBackground(Color.BLACK);
+        btnStandard.setBounds(650, 50, 300, 35);
+        btnStandard.setText("Standard");
+        btnStandard.setVisible(true);
+        panelLifeTracker.add(btnStandard);
+
+        for (int i = 0; i < btnLifePlusLT.length; i++) {
+            btnStandard.addActionListener(e -> {
+                lblStartingLife.setText("20");
+                for(JLabel s : lblPlayerLife){
+                    s.setText(lblStartingLife.getText());
+                }
+            });
+        }
 
     }
 
@@ -612,6 +654,7 @@ public class Main {
             btnLifePlusLT[i].setVisible(true);
             lblPlayerLife[i].setVisible(true);
             btnResetLife[i].setVisible(true);
+
         }
         for (int i = playerCount; i < playerLabelsGT.length; i++) {
             playerLabelsGT[i].setVisible(false);
