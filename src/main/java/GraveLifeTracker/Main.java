@@ -420,11 +420,11 @@ public class Main {
 
             int index = i;
             btnTotalMinusGT[i].addActionListener(e -> {
-                int creatureCount = Integer.parseInt(lblCreatureCount[index].getText());
-                if (creatureCount > 0) { // Prevent negative numbers
-                    lblCreatureCount[index].setText(String.valueOf(creatureCount - 1));
+                int totalCount = Integer.parseInt(lblTotalCountGT[index].getText());
+                if (totalCount > 0) { // Prevent negative numbers
+                    lblTotalCountGT[index].setText(String.valueOf(totalCount - 1));
                 }
-                if (creatureCount == 0) {
+                if (totalCount == 0) {
                     JOptionPane.showMessageDialog(null, "You cannot have a negative number of cards.", "Centered Message", JOptionPane.INFORMATION_MESSAGE);
                 }
             });
