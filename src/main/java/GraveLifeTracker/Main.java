@@ -35,6 +35,7 @@ public class Main {
     private JButton btnResetAllLife;
     private JButton btnCommander;
     private JButton btnStandard;
+    private JButton[] btnResetCountsGT;
 
 
     /**
@@ -135,7 +136,7 @@ public class Main {
         btnExit.setForeground(Color.GREEN);
         btnExit.setFont(new Font("Engravers MT", Font.BOLD, 30));
         btnExit.setBackground(Color.BLACK);
-        btnExit.setBounds(161, 688, 251, 50);
+        btnExit.setBounds(137, 688, 275, 50);
         panelMain.add(btnExit);
         btnExit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -191,7 +192,7 @@ public class Main {
         btnContinue.setFont(new Font("Engravers MT", Font.BOLD, 30));
         btnContinue.setBackground(new Color(0, 0, 0));
         btnContinue.setForeground(new Color(0, 255, 0));
-        btnContinue.setBounds(573, 688, 251, 50);
+        btnContinue.setBounds(573, 688, 275, 50);
         panelMain.add(btnContinue);
         btnContinue.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -329,7 +330,7 @@ public class Main {
             playerLabelsGT[i].setFont(new Font("Engravers MT", Font.BOLD, 30));
             playerLabelsGT[i].setForeground(Color.GREEN);
             playerLabelsGT[i].setBackground(Color.BLACK);
-            playerLabelsGT[i].setBounds(100, 100 + i * 40, 300, 35);
+            playerLabelsGT[i].setBounds(50, 100 + i * 40, 300, 35);
             playerLabelsGT[i].setVisible(i == 0);
             panelGraveTracker.add(playerLabelsGT[i]);
 
@@ -340,14 +341,14 @@ public class Main {
         lblCreatureGT.setFont(new Font("Engravers MT", Font.BOLD, 30));
         lblCreatureGT.setForeground(Color.GREEN);
         lblCreatureGT.setBackground(Color.BLACK);
-        lblCreatureGT.setBounds(390, 50, 250, 35);
+        lblCreatureGT.setBounds(290, 50, 250, 35);
         panelGraveTracker.add(lblCreatureGT);
 
         JLabel lblTotalGT = new JLabel("Total");
         lblTotalGT.setFont(new Font("Engravers MT", Font.BOLD, 30));
         lblTotalGT.setForeground(Color.GREEN);
         lblTotalGT.setBackground(Color.BLACK);
-        lblTotalGT.setBounds(690, 50, 250, 35);
+        lblTotalGT.setBounds(590, 50, 250, 35);
         panelGraveTracker.add(lblTotalGT);
 
         // Initialize creature count labels
@@ -357,7 +358,7 @@ public class Main {
             lblCreatureCount[i].setFont(new Font("Engravers MT", Font.BOLD, 30));
             lblCreatureCount[i].setForeground(Color.GREEN);
             lblCreatureCount[i].setBackground(Color.BLACK);
-            lblCreatureCount[i].setBounds(500, 100 + i * 40, 65, 35); // Adjusted X position for labels
+            lblCreatureCount[i].setBounds(400, 100 + i * 40, 65, 35); // Adjusted X position for labels
             lblCreatureCount[i].setText("0");
             panelGraveTracker.add(lblCreatureCount[i]);
         }
@@ -369,7 +370,7 @@ public class Main {
             btnCreatureMinusGT[i].setFont(new Font("Engravers MT", Font.BOLD, 30));
             btnCreatureMinusGT[i].setForeground(Color.GREEN);
             btnCreatureMinusGT[i].setBackground(Color.BLACK);
-            btnCreatureMinusGT[i].setBounds(400, 100 + i * 40, 65, 35);
+            btnCreatureMinusGT[i].setBounds(300, 100 + i * 40, 65, 35);
             btnCreatureMinusGT[i].setText("-");
             panelGraveTracker.add(btnCreatureMinusGT[i]);
 
@@ -393,7 +394,7 @@ public class Main {
             btnCreaturePlusGT[i].setFont(new Font("Engravers MT", Font.BOLD, 30));
             btnCreaturePlusGT[i].setForeground(Color.GREEN);
             btnCreaturePlusGT[i].setBackground(Color.BLACK);
-            btnCreaturePlusGT[i].setBounds(565, 100 + i * 40, 65, 35); // Adjusted X position for plus buttons
+            btnCreaturePlusGT[i].setBounds(465, 100 + i * 40, 65, 35); // Adjusted X position for plus buttons
             btnCreaturePlusGT[i].setText("+");
             panelGraveTracker.add(btnCreaturePlusGT[i]);
 
@@ -414,7 +415,7 @@ public class Main {
             btnTotalMinusGT[i].setFont(new Font("Engravers MT", Font.BOLD, 30));
             btnTotalMinusGT[i].setForeground(Color.GREEN);
             btnTotalMinusGT[i].setBackground(Color.BLACK);
-            btnTotalMinusGT[i].setBounds(650, 100 + i * 40, 65, 35);
+            btnTotalMinusGT[i].setBounds(550, 100 + i * 40, 65, 35);
             btnTotalMinusGT[i].setText("-");
             panelGraveTracker.add(btnTotalMinusGT[i]);
 
@@ -436,7 +437,7 @@ public class Main {
             lblTotalCountGT[i].setFont(new Font("Engravers MT", Font.BOLD, 30));
             lblTotalCountGT[i].setForeground(Color.GREEN);
             lblTotalCountGT[i].setBackground(Color.BLACK);
-            lblTotalCountGT[i].setBounds(750, 100 + i * 40, 65, 35);
+            lblTotalCountGT[i].setBounds(650, 100 + i * 40, 65, 35);
             lblTotalCountGT[i].setText("0");
             panelGraveTracker.add(lblTotalCountGT[i]);
 
@@ -448,7 +449,7 @@ public class Main {
             btnTotalPlusGT[i].setFont(new Font("Engravers MT", Font.BOLD, 30));
             btnTotalPlusGT[i].setForeground(Color.GREEN);
             btnTotalPlusGT[i].setBackground(Color.BLACK);
-            btnTotalPlusGT[i].setBounds(800, 100 + i * 40, 65, 35);
+            btnTotalPlusGT[i].setBounds(700, 100 + i * 40, 65, 35);
             btnTotalPlusGT[i].setText("+");
             panelGraveTracker.add(btnTotalPlusGT[i]);
 
@@ -456,6 +457,23 @@ public class Main {
             btnTotalPlusGT[i].addActionListener(e -> {
                 int creatureCount = Integer.parseInt(lblTotalCountGT[index].getText());
                 lblTotalCountGT[index].setText(String.valueOf(creatureCount + 1));
+            });
+        }
+
+        btnResetCountsGT = new JButton[10];
+        for (int i = 0; i < btnResetCountsGT.length; i++) {
+            btnResetCountsGT[i] = new JButton("btnResetCountsGT" + (i + 1));
+            btnResetCountsGT[i].setFont(new Font("Engravers MT", Font.BOLD, 20));
+            btnResetCountsGT[i].setForeground(Color.GREEN);
+            btnResetCountsGT[i].setBackground(Color.BLACK);
+            btnResetCountsGT[i].setBounds(800, 100 + i * 40, 150, 35);
+            btnResetCountsGT[i].setText("RESET");
+            panelGraveTracker.add(btnResetCountsGT[i]);
+            int index = i;
+            btnResetCountsGT[i].addActionListener(e -> {
+                lblTotalCountGT[index].setText("0");
+                lblCreatureCount[index].setText("0");
+
             });
         }
 
@@ -654,6 +672,7 @@ public class Main {
             btnLifePlusLT[i].setVisible(true);
             lblPlayerLife[i].setVisible(true);
             btnResetLife[i].setVisible(true);
+            btnResetCountsGT[i].setVisible(true);
 
         }
         for (int i = playerCount; i < playerLabelsGT.length; i++) {
@@ -669,6 +688,7 @@ public class Main {
             btnLifePlusLT[i].setVisible(false);
             lblPlayerLife[i].setVisible(false);
             btnResetLife[i].setVisible(false);
+            btnResetCountsGT[i].setVisible(false);
         }
         panelToHide.setVisible(false);
         panelToShow.setVisible(true);
