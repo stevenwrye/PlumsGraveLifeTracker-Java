@@ -2,12 +2,16 @@ package GraveLifeTracker;
 
 import java.awt.*;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.IOException;
 
 public class Main {
 
@@ -76,13 +80,7 @@ public class Main {
         frame.getContentPane().setLayout(null);
         frame.setBounds(100, 100, 1000, 1000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        try {
-            frame.setIconImage(ImageIO.read(new File("src/icon.png")));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
-        ImageIcon iconImage = new ImageIcon("src/icon.png");
 
         //Main Panel
         JPanel panelMain = new JPanel();
@@ -124,9 +122,9 @@ public class Main {
 
 
         //panelMain code
-        JLabel icon = new JLabel("", iconImage, JLabel.CENTER);
-        icon.setBounds(390, 180, 200, 200);
-        panelMain.add(icon);
+        //JLabel icon = new JLabel("", iconImage, JLabel.CENTER);
+        //icon.setBounds(390, 180, 200, 200);
+        //panelMain.add(icon);
 
         JLabel lblSelectPlayers = new JLabel("Select number of players:");
         lblSelectPlayers.setHorizontalAlignment(SwingConstants.CENTER);
