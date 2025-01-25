@@ -324,7 +324,7 @@ public class Main {
             checkBoxes[i].setFont(new Font("Engravers MT", Font.BOLD, 20));
             checkBoxes[i].setForeground(Color.GREEN);
             checkBoxes[i].setBackground(Color.BLACK);
-            checkBoxes[i].setBounds(400, 575 + i * 30, 260, 25);
+            checkBoxes[i].setBounds(400, 560 + i * 30, 260, 25);
             checkBoxes[i].setVisible(true);
             panelGraveTracker.add(checkBoxes[i]);
         }
