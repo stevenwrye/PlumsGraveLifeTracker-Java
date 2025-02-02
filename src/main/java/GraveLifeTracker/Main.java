@@ -41,7 +41,6 @@ public class Main {
     private JButton btnResetAllTotalGT;
     private JButton btnResetEverythingGT;
 
-
     /**
      * Launch the application.
      */
@@ -64,16 +63,18 @@ public class Main {
      */
     public Main() {
         initialize();
+
     }
 
     /**
      * Initialize the contents of the frame.
      */
     private void initialize() {
-
+        //Creates the startingLife Label and sets the text to "40"
         JLabel lblStartingLife = new JLabel();
         lblStartingLife.setText("40");
 
+        //Creates the main JFrame and establishes its dimensions.
         frame = new JFrame();
         frame.getContentPane().setForeground(new Color(0, 255, 0));
         frame.getContentPane().setBackground(new Color(0, 0, 0));
@@ -122,10 +123,6 @@ public class Main {
 
 
         //panelMain code
-        //JLabel icon = new JLabel("", iconImage, JLabel.CENTER);
-        //icon.setBounds(390, 180, 200, 200);
-        //panelMain.add(icon);
-
         JLabel lblSelectPlayers = new JLabel("Select number of players:");
         lblSelectPlayers.setHorizontalAlignment(SwingConstants.CENTER);
         lblSelectPlayers.setForeground(Color.GREEN);
@@ -246,7 +243,10 @@ public class Main {
         panelPlayerNames.add(btnLife);
         btnLife.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                updateVisibility(playerCount, panelPlayerNames, panelLifeTracker);
+
+                    updateVisibility(playerCount, panelPlayerNames, panelLifeTracker);
+
+
             }
         });
 
@@ -258,7 +258,9 @@ public class Main {
         panelPlayerNames.add(btnGrave);
         btnGrave.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                updateVisibility(playerCount, panelPlayerNames, panelGraveTracker);
+
+                    updateVisibility(playerCount, panelPlayerNames, panelGraveTracker);
+
             }
         });
 
@@ -394,6 +396,7 @@ public class Main {
                 if (creatureCount == 0) {
                     JOptionPane.showMessageDialog(null, "You cannot have a negative number of Creatures.", "Centered Message", JOptionPane.INFORMATION_MESSAGE);
                 }
+
             });
         }
 
@@ -413,8 +416,12 @@ public class Main {
             btnCreaturePlusGT[i].addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     int creatureCount = Integer.parseInt(lblCreatureCount[index].getText());
-                    lblCreatureCount[index].setText(String.valueOf(creatureCount + 1));
-
+                    if (creatureCount < 100) {
+                        lblCreatureCount[index].setText(String.valueOf(creatureCount + 1));
+                    }
+                    if (creatureCount == 100) {
+                        JOptionPane.showMessageDialog(null, "You cannot have more than 100 creatures.", "Centered Message", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }
             });
         }
@@ -498,8 +505,13 @@ public class Main {
 
             int index = i;
             btnTotalPlusGT[i].addActionListener(e -> {
-                int creatureCount = Integer.parseInt(lblTotalCountGT[index].getText());
-                lblTotalCountGT[index].setText(String.valueOf(creatureCount + 1));
+                int totalCount = Integer.parseInt(lblTotalCountGT[index].getText());
+                if (totalCount < 100) {
+                    lblTotalCountGT[index].setText(String.valueOf(totalCount + 1));
+                }
+                if (totalCount == 100) {
+                    JOptionPane.showMessageDialog(null, "You cannot have more than 100 cards.", "Centered Message", JOptionPane.INFORMATION_MESSAGE);
+                }
             });
         }
 
@@ -624,7 +636,7 @@ public class Main {
                     lblPlayerLife[index].setText(String.valueOf(creatureCount - 1));
                 }
                 if (creatureCount == 0) {
-                    JOptionPane.showMessageDialog(null, "You cannot have a negative amount of life.", "Centered Message", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null,  playerLabelsLT[index].getText().toUpperCase() + " has lost the game.", "Centered Message", JOptionPane.INFORMATION_MESSAGE);
                 }
             });
 
@@ -771,6 +783,7 @@ public class Main {
         panelToHide.setVisible(false);
         panelToShow.setVisible(true);
     }
+
 
 }
 
