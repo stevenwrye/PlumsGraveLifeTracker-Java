@@ -17,8 +17,8 @@ public class Main {
 
     private JFrame frame;
     private JTextField txtPlayerNumber;
-    public int playerCount = 1;  // Start with 1 player visible
-    private JTextField[] txtArray; // Array to hold all player text fields
+    public int playerCount = 1;
+    private JTextField[] txtArray;
     private JLabel[] playerLabelsGT;
     private JButton[] btnCreatureMinusGT;
     private JLabel[] lblCreatureCount;
@@ -40,6 +40,8 @@ public class Main {
     private JButton btnResetAllCreaturesGT;
     private JButton btnResetAllTotalGT;
     private JButton btnResetEverythingGT;
+
+
 
     /**
      * Launch the application.
@@ -74,6 +76,7 @@ public class Main {
         JLabel lblStartingLife = new JLabel();
         lblStartingLife.setText("40");
 
+
         //Creates the main JFrame and establishes its dimensions.
         frame = new JFrame();
         frame.getContentPane().setForeground(new Color(0, 255, 0));
@@ -83,7 +86,7 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-        //Main Panel
+        //Initializes Main Panel
         JPanel panelMain = new JPanel();
         panelMain.setForeground(new Color(0, 255, 0));
         panelMain.setBackground(new Color(0, 0, 0));
@@ -94,7 +97,7 @@ public class Main {
 
 
 
-        //PlayerNames Panel
+        //Initializes PlayerNames Panel
         JPanel panelPlayerNames = new JPanel();
         panelPlayerNames.setLayout(null);
         panelPlayerNames.setForeground(Color.GREEN);
@@ -104,7 +107,7 @@ public class Main {
         panelPlayerNames.setVisible(false);
 
 
-        //GraveTacker Panel
+        //Initializes GraveTacker Panel
         JPanel panelGraveTracker = new JPanel();
         panelGraveTracker.setBackground(new Color(0, 0, 0));
         panelGraveTracker.setBounds(0, 0, 986, 963);
@@ -112,7 +115,7 @@ public class Main {
         panelGraveTracker.setLayout(null);
         panelGraveTracker.setVisible(false);
 
-        //LifeTracker Panel
+        //Initializes LifeTracker Panel
         JPanel panelLifeTracker = new JPanel();
         panelLifeTracker.setForeground(new Color(0, 255, 0));
         panelLifeTracker.setBackground(new Color(0, 0, 0));
@@ -121,6 +124,8 @@ public class Main {
         panelLifeTracker.setLayout(null);
         panelLifeTracker.setVisible(false);
 
+        /*
+        */
 
         //panelMain code
         JLabel lblSelectPlayers = new JLabel("Select number of players:");
@@ -138,18 +143,7 @@ public class Main {
         lblMainHeader.setHorizontalAlignment(SwingConstants.CENTER);
         panelMain.setLayout(null);
 
-        JButton btnExit = new JButton("Exit");
-        btnExit.setForeground(Color.GREEN);
-        btnExit.setFont(new Font("Engravers MT", Font.BOLD, 30));
-        btnExit.setBackground(Color.BLACK);
-        btnExit.setBounds(137, 688, 275, 50);
-        panelMain.add(btnExit);
-        btnExit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
-
+        //Text field that displays the current selected number of players
         txtPlayerNumber = new JTextField();
         txtPlayerNumber.setHorizontalAlignment(SwingConstants.CENTER);
         txtPlayerNumber.setText("1");
@@ -159,10 +153,9 @@ public class Main {
         txtPlayerNumber.setEditable(false);
         txtPlayerNumber.setBounds(428, 521, 130, 50);
         panelMain.add(txtPlayerNumber);
-        txtPlayerNumber.setColumns(1);
 
 
-        // "-" button
+        //Player count "-" button
         JButton btnMinusButton = new JButton("-");
         btnMinusButton.setForeground(new Color(0, 255, 0));
         btnMinusButton.setBackground(new Color(0, 0, 0));
@@ -178,7 +171,7 @@ public class Main {
         });
 
 
-        // "+" button
+        //Player count "+" button
         JButton btnPlusButton = new JButton("+");
         btnPlusButton.setForeground(new Color(0, 255, 0));
         btnPlusButton.setBackground(new Color(0, 0, 0));
@@ -193,7 +186,20 @@ public class Main {
             }
         });
 
+        //Exit button
+        JButton btnExit = new JButton("Exit");
+        btnExit.setForeground(Color.GREEN);
+        btnExit.setFont(new Font("Engravers MT", Font.BOLD, 30));
+        btnExit.setBackground(Color.BLACK);
+        btnExit.setBounds(137, 688, 275, 50);
+        panelMain.add(btnExit);
+        btnExit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
 
+        //Continues to the PlayerNames panel
         JButton btnContinue = new JButton("Continue");
         btnContinue.setFont(new Font("Engravers MT", Font.BOLD, 30));
         btnContinue.setBackground(new Color(0, 0, 0));
@@ -208,8 +214,12 @@ public class Main {
             }
         });
 
-        //panelPlayerNames code
 
+        /*
+         */
+
+
+        //panelPlayerNames code
         JButton btnBack = new JButton("Back");
         btnBack.setForeground(Color.GREEN);
         btnBack.setFont(new Font("Engravers MT", Font.BOLD, 30));
@@ -223,6 +233,7 @@ public class Main {
             }
         });
 
+        //Exit button
         JButton btnExitPN = new JButton("Exit");
         btnExitPN.setForeground(Color.GREEN);
         btnExitPN.setFont(new Font("Engravers MT", Font.BOLD, 30));
@@ -235,6 +246,7 @@ public class Main {
             }
         });
 
+        //Sets LifeTracker panel visible and PlayerNames not visible
         JButton btnLife = new JButton("LIFE");
         btnLife.setForeground(Color.GREEN);
         btnLife.setFont(new Font("Engravers MT", Font.BOLD, 30));
@@ -243,13 +255,13 @@ public class Main {
         panelPlayerNames.add(btnLife);
         btnLife.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
                     updateVisibility(playerCount, panelPlayerNames, panelLifeTracker);
 
 
             }
         });
 
+        //Sets GraveTracker panel visible and PlayerNames not visible
         JButton btnGrave = new JButton("GRAVE");
         btnGrave.setForeground(Color.GREEN);
         btnGrave.setFont(new Font("Engravers MT", Font.BOLD, 30));
@@ -258,52 +270,11 @@ public class Main {
         panelPlayerNames.add(btnGrave);
         btnGrave.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
                     updateVisibility(playerCount, panelPlayerNames, panelGraveTracker);
 
             }
         });
 
-
-        JButton btnLifeGT = new JButton("LIFE");
-        btnLifeGT.setForeground(Color.GREEN);
-        btnLifeGT.setFont(new Font("Engravers MT", Font.BOLD, 30));
-        btnLifeGT.setBackground(Color.BLACK);
-        btnLifeGT.setBounds(367, 853, 251, 50);
-        panelGraveTracker.add(btnLifeGT);
-        btnLifeGT.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                panelGraveTracker.setVisible(false);
-                panelLifeTracker.setVisible(true);
-            }
-        });
-
-        JButton btnExitGT = new JButton("Exit");
-        btnExitGT.setForeground(Color.GREEN);
-        btnExitGT.setFont(new Font("Engravers MT", Font.BOLD, 30));
-        btnExitGT.setBackground(Color.BLACK);
-        btnExitGT.setBounds(58, 853, 251, 50);
-        panelGraveTracker.add(btnExitGT);
-        btnExitGT.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
-
-
-        JButton btnBackGT = new JButton("Back");
-        btnBackGT.setForeground(Color.GREEN);
-        btnBackGT.setFont(new Font("Engravers MT", Font.BOLD, 30));
-        btnBackGT.setBackground(Color.BLACK);
-        btnBackGT.setBounds(676, 853, 251, 50);
-        panelGraveTracker.add(btnBackGT);
-        panelGraveTracker.setVisible(false);
-        btnBackGT.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                panelGraveTracker.setVisible(false);
-                panelPlayerNames.setVisible(true);
-            }
-        });
 
         //Establishes an array of JTextFields for entering player names.
         txtArray = new JTextField[10];
@@ -318,8 +289,12 @@ public class Main {
         }
 
 
+        /*
+         */
+
+
         //panelGraveTracker code
-        //Array to hold all checkBoxes
+        //Array of checkBoxes used to track the type of cards in graveyards
         checkBoxes = new JCheckBox[9];
         for (int i = 0; i < checkBoxes.length; i++) {
             checkBoxes[i] = new JCheckBox("CheckBox" + (i + 1));
@@ -335,7 +310,7 @@ public class Main {
             checkBoxes[i].setText(checkBoxesText[i]);
         }
 
-
+        //Labels that hold player names entered in respective textboxes on PlayerNames panel.
         playerLabelsGT = new JLabel[10];
         for (int i = 0; i < playerLabelsGT.length; i++) {
             playerLabelsGT[i] = new JLabel("Player" + i + 1);
@@ -363,7 +338,7 @@ public class Main {
         lblTotalGT.setBounds(690, 50, 250, 35);
         panelGraveTracker.add(lblTotalGT);
 
-        // Initialize creature count labels
+        //Labels to display creature count for the corresponding players
         lblCreatureCount = new JLabel[10];
         for (int i = 0; i < lblCreatureCount.length; i++) {
             lblCreatureCount[i] = new JLabel("lblCreatureCount" + (i + 1)); // Correct label text
@@ -375,7 +350,7 @@ public class Main {
             panelGraveTracker.add(lblCreatureCount[i]);
         }
 
-        // Initialize minus buttons
+        //Creature minus buttons to adjust creature count
         btnCreatureMinusGT = new JButton[10];
         for (int i = 0; i < btnCreatureMinusGT.length; i++) {
             btnCreatureMinusGT[i] = new JButton("btnCreatureMinus" + (i + 1)); // Correct button label
@@ -386,11 +361,12 @@ public class Main {
             btnCreatureMinusGT[i].setText("-");
             panelGraveTracker.add(btnCreatureMinusGT[i]);
 
-            // Capture the correct index for the button
+
             int index = i;
             btnCreatureMinusGT[i].addActionListener(e -> {
                 int creatureCount = Integer.parseInt(lblCreatureCount[index].getText());
-                if (creatureCount > 0) { // Prevent negative numbers
+                // Prevent negative numbers
+                if (creatureCount > 0) {
                     lblCreatureCount[index].setText(String.valueOf(creatureCount - 1));
                 }
                 if (creatureCount == 0) {
@@ -400,7 +376,7 @@ public class Main {
             });
         }
 
-        // Initialize plus buttons
+        //Creature plus buttons to adjust creature count
         btnCreaturePlusGT = new JButton[10];
         for (int i = 0; i < btnCreaturePlusGT.length; i++) {
             btnCreaturePlusGT[i] = new JButton("btnCreaturePlus" + (i + 1)); // Number the button labels
@@ -411,11 +387,11 @@ public class Main {
             btnCreaturePlusGT[i].setText("+");
             panelGraveTracker.add(btnCreaturePlusGT[i]);
 
-            // Capture the correct index for the button
             int index = i;
             btnCreaturePlusGT[i].addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     int creatureCount = Integer.parseInt(lblCreatureCount[index].getText());
+                    //Prevents Creature Count from going over 100 and throws an error message when a user attempts to increase the count beyond 100.
                     if (creatureCount < 100) {
                         lblCreatureCount[index].setText(String.valueOf(creatureCount + 1));
                     }
@@ -426,6 +402,7 @@ public class Main {
             });
         }
 
+        //Resets creature count for the respective player to 0
         btnResetCreaturesGT = new JButton[10];
         for (int i = 0; i < btnResetCreaturesGT.length; i++) {
             btnResetCreaturesGT[i] = new JButton("btnResetCountsGT" + (i + 1));
@@ -442,6 +419,7 @@ public class Main {
             });
         }
 
+        //Resets all creature counts to 0.
         btnResetAllCreaturesGT = new JButton("btnResetAllCreaturesGT");
         btnResetAllCreaturesGT.setText("Reset");
         btnResetAllCreaturesGT.setFont(new Font("Engravers MT", Font.BOLD, 30));
@@ -458,7 +436,7 @@ public class Main {
     }
 
 
-        //Total Count controls
+        //Total minus buttons
         btnTotalMinusGT = new JButton[10];
         for (int i = 0; i < btnTotalMinusGT.length; i++) {
             btnTotalMinusGT[i] = new JButton("btnTotalMinusGT" + (i + 1));
@@ -472,6 +450,7 @@ public class Main {
             int index = i;
             btnTotalMinusGT[i].addActionListener(e -> {
                 int totalCount = Integer.parseInt(lblTotalCountGT[index].getText());
+                //Prevents the Total Count from going below 0 and throws an error message if the user attempts to decrease the Total Count below 0
                 if (totalCount > 0) { // Prevent negative numbers
                     lblTotalCountGT[index].setText(String.valueOf(totalCount - 1));
                 }
@@ -481,6 +460,7 @@ public class Main {
             });
         }
 
+        //Labels that display the Total Count amount
         lblTotalCountGT = new JLabel[10];
         for (int i = 0; i < lblTotalCountGT.length; i++) {
             lblTotalCountGT[i] = new JLabel("lblTotalCountGT" + (i + 1));
@@ -493,6 +473,7 @@ public class Main {
 
         }
 
+        //Total plus buttons
         btnTotalPlusGT = new JButton[10];
         for (int i = 0; i < btnTotalPlusGT.length; i++) {
             btnTotalPlusGT[i] = new JButton("btnTotalPlusGT" + (i + 1));
@@ -506,6 +487,7 @@ public class Main {
             int index = i;
             btnTotalPlusGT[i].addActionListener(e -> {
                 int totalCount = Integer.parseInt(lblTotalCountGT[index].getText());
+                //Allows the user to increment the Total amount by 1 as long as the Total count is less than 0 and shows a dialog box when a user attempts to raise the count above 100.
                 if (totalCount < 100) {
                     lblTotalCountGT[index].setText(String.valueOf(totalCount + 1));
                 }
@@ -515,6 +497,7 @@ public class Main {
             });
         }
 
+        //Reset buttons for each individual player's Total Count.
         btnResetTotalGT = new JButton[10];
         for (int i = 0; i < btnResetTotalGT.length; i++) {
             btnResetTotalGT[i] = new JButton("btnResetCountsGT" + (i + 1));
@@ -531,6 +514,7 @@ public class Main {
             });
         }
 
+        //Reset button for all Total Counts on the page.
         btnResetAllTotalGT = new JButton("btnResetAllCreaturesGT");
         btnResetAllTotalGT.setText("Reset");
         btnResetAllTotalGT.setFont(new Font("Engravers MT", Font.BOLD, 30));
@@ -546,6 +530,7 @@ public class Main {
             });
         }
 
+        //Button that resets the state of all labels and checkboxes to their default state of either 0 for labels or unchecked for the checkboxes.
         btnResetEverythingGT = new JButton("btnResetEverythingGT");
         btnResetEverythingGT.setText("<html>Reset<br/>All</html>");
         btnResetEverythingGT.setFont(new Font("Engravers MT", Font.BOLD, 30));
@@ -563,9 +548,53 @@ public class Main {
             });
         }
 
+        //Sets LifeTracker panel to visible status and sets GraveTarcker panel to not visible.
+        JButton btnLifeGT = new JButton("LIFE");
+        btnLifeGT.setForeground(Color.GREEN);
+        btnLifeGT.setFont(new Font("Engravers MT", Font.BOLD, 30));
+        btnLifeGT.setBackground(Color.BLACK);
+        btnLifeGT.setBounds(367, 853, 251, 50);
+        panelGraveTracker.add(btnLifeGT);
+        btnLifeGT.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                panelGraveTracker.setVisible(false);
+                panelLifeTracker.setVisible(true);
+            }
+        });
+
+        //Exits the application
+        JButton btnExitGT = new JButton("Exit");
+        btnExitGT.setForeground(Color.GREEN);
+        btnExitGT.setFont(new Font("Engravers MT", Font.BOLD, 30));
+        btnExitGT.setBackground(Color.BLACK);
+        btnExitGT.setBounds(58, 853, 251, 50);
+        panelGraveTracker.add(btnExitGT);
+        btnExitGT.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        //Returns to the PlayerNames panel and hides the GraveTracker panel
+        JButton btnBackGT = new JButton("Back");
+        btnBackGT.setForeground(Color.GREEN);
+        btnBackGT.setFont(new Font("Engravers MT", Font.BOLD, 30));
+        btnBackGT.setBackground(Color.BLACK);
+        btnBackGT.setBounds(676, 853, 251, 50);
+        panelGraveTracker.add(btnBackGT);
+        panelGraveTracker.setVisible(false);
+        btnBackGT.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                panelGraveTracker.setVisible(false);
+                panelPlayerNames.setVisible(true);
+            }
+        });
+
+
 
 
         //panelLifeTracker Code
+        //Sets GraveTracker panel to visible and LifeTracker panel to not visible
         JButton btnGraveLT = new JButton("GRAVE");
         btnGraveLT.setForeground(Color.GREEN);
         btnGraveLT.setFont(new Font("Engravers MT", Font.BOLD, 30));
@@ -579,6 +608,7 @@ public class Main {
             }
         });
 
+        //Exits the application
         JButton btnExitLT = new JButton("Exit");
         btnExitLT.setForeground(Color.GREEN);
         btnExitLT.setFont(new Font("Engravers MT", Font.BOLD, 30));
@@ -591,7 +621,7 @@ public class Main {
             }
         });
 
-
+        //Sets PlayerNames panel to visible and LifeTracker panel to not visible
         JButton btnBackLT = new JButton("Back");
         btnBackLT.setForeground(Color.GREEN);
         btnBackLT.setFont(new Font("Engravers MT", Font.BOLD, 30));
@@ -606,6 +636,7 @@ public class Main {
             }
         });
 
+        //Labels to display the names in the respective textboxes on PlayerNames panel.
         playerLabelsLT = new JLabel[10];
         for (int i = 0; i < playerLabelsLT.length; i++) {
             playerLabelsLT[i] = new JLabel("Player" + i + 1);
@@ -618,6 +649,7 @@ public class Main {
 
         }
 
+        //Life Total minus buttons
         btnLifeMinusLT = new JButton[10];
         for (int i = 0; i < btnLifeMinusLT.length; i++) {
             btnLifeMinusLT[i] = new JButton("btnLifeMinusLT" + i + 1);
@@ -631,17 +663,19 @@ public class Main {
 
             int index = i;
             btnLifeMinusLT[i].addActionListener(e -> {
-                int creatureCount = Integer.parseInt(lblPlayerLife[index].getText());
-                if (creatureCount > 0) { // Prevent negative numbers
-                    lblPlayerLife[index].setText(String.valueOf(creatureCount - 1));
+                int lifeCount = Integer.parseInt(lblPlayerLife[index].getText());
+                // Prevent negative numbers from being displayed and show a dialog box stating the respective user has lost the game.
+                if (lifeCount > 0) {
+                    lblPlayerLife[index].setText(String.valueOf(lifeCount - 1));
                 }
-                if (creatureCount == 0) {
+                if (lifeCount == 0) {
                     JOptionPane.showMessageDialog(null,  playerLabelsLT[index].getText().toUpperCase() + " has lost the game.", "Centered Message", JOptionPane.INFORMATION_MESSAGE);
                 }
             });
 
         }
 
+        //Labels that display the respective player Life Total
         lblPlayerLife = new JLabel[10];
         for (int i = 0; i < playerLabelsLT.length; i++) {
             lblPlayerLife[i] = new JLabel("lblPlayerLife" + i + 1);
@@ -654,6 +688,7 @@ public class Main {
             panelLifeTracker.add(lblPlayerLife[i]);
         }
 
+        //Button which increase the respective player's Life Total.
         btnLifePlusLT = new JButton[10];
         for (int i = 0; i < btnLifePlusLT.length; i++) {
             btnLifePlusLT[i] = new JButton("btnLifePlusLT" + i + 1);
@@ -673,6 +708,7 @@ public class Main {
 
         }
 
+        //Resets the respective player's Life Total to either 40 for Commander mode or 20 for Standard mode.
         btnResetLife = new JButton[10];
         for (int i = 0; i < btnLifePlusLT.length; i++) {
             btnResetLife[i] = new JButton("btnLifePlusLT" + i + 1);
@@ -685,11 +721,11 @@ public class Main {
             panelLifeTracker.add(btnResetLife[i]);
             int index = i;
             btnResetLife[i].addActionListener(e -> {
-                int creatureCount = Integer.parseInt(lblPlayerLife[index].getText());
                 lblPlayerLife[index].setText(lblStartingLife.getText());
             });
         }
 
+        //Resets all life totals on the page to 40 or 20 depending on mode selected.
         btnResetAllLife = new JButton();
         btnResetAllLife.setFont(new Font("Engravers MT", Font.BOLD, 30));
         btnResetAllLife.setForeground(Color.GREEN);
@@ -704,7 +740,7 @@ public class Main {
         });
 
 
-
+        //Sets all the Life Totals 40 for Commander games.
         btnCommander = new JButton();
         btnCommander.setFont(new Font("Engravers MT", Font.BOLD, 30));
         btnCommander.setForeground(Color.GREEN);
@@ -723,6 +759,7 @@ public class Main {
                 });
             }
 
+        //Sets all the Life Totals to 20 for Standard games.
         btnStandard = new JButton();
         btnStandard.setFont(new Font("Engravers MT", Font.BOLD, 30));
         btnStandard.setForeground(Color.GREEN);
@@ -746,7 +783,7 @@ public class Main {
     // Method to update visibility
     private void updateVisibility(int playerCount, JPanel panelToHide, JPanel panelToShow) {
         for (int i = 0; i < playerCount; i++) {
-            playerLabelsGT[i].setText(txtArray[i].getText());
+             playerLabelsGT[i].setText(txtArray[i].getText());
             playerLabelsLT[i].setText(txtArray[i].getText());
             playerLabelsGT[i].setVisible(true);
             playerLabelsLT[i].setVisible(true);
@@ -786,6 +823,4 @@ public class Main {
 
 
 }
-
-
 
