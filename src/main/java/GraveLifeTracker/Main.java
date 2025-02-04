@@ -702,8 +702,8 @@ public class Main {
 
             int index = i;
             btnLifePlusLT[i].addActionListener(e -> {
-                int creatureCount = Integer.parseInt(lblPlayerLife[index].getText());
-                lblPlayerLife[index].setText(String.valueOf(creatureCount + 1));
+                int lifeCount = Integer.parseInt(lblPlayerLife[index].getText());
+                lblPlayerLife[index].setText(String.valueOf(lifeCount + 1));
             });
 
         }
