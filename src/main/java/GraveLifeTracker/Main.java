@@ -40,6 +40,7 @@ public class Main {
     private JButton btnResetAllCreaturesGT;
     private JButton btnResetAllTotalGT;
     private JButton btnResetEverythingGT;
+    private Player[] players = new Player[10];
 
 
 
@@ -75,6 +76,7 @@ public class Main {
         //Creates the startingLife Label and sets the text to "40"
         JLabel lblStartingLife = new JLabel();
         lblStartingLife.setText("40");
+
 
 
         //Creates the main JFrame and establishes its dimensions.
@@ -280,6 +282,7 @@ public class Main {
         txtArray = new JTextField[10];
         for (int i = 0; i < txtArray.length; i++) {
             txtArray[i] = new JTextField("Player " + (i + 1));
+            players[i] = new Player("Player " + (i + 1)); // Initialize Player objects
             txtArray[i].setFont(new Font("Engravers MT", Font.BOLD, 30));
             txtArray[i].setForeground(Color.GREEN);
             txtArray[i].setBackground(Color.BLACK);
@@ -361,18 +364,14 @@ public class Main {
             btnCreatureMinusGT[i].setText("-");
             panelGraveTracker.add(btnCreatureMinusGT[i]);
 
-
             int index = i;
+            // Creature minus buttons
             btnCreatureMinusGT[i].addActionListener(e -> {
-                int creatureCount = Integer.parseInt(lblCreatureCount[index].getText());
-                // Prevent negative numbers
-                if (creatureCount > 0) {
-                    lblCreatureCount[index].setText(String.valueOf(creatureCount - 1));
-                }
-                if (creatureCount == 0) {
+                players[index].decrementCreatures();
+                lblCreatureCount[index].setText(String.valueOf(players[index].getCreatures()));
+                if (players[index].getCreatures() == 0) {
                     JOptionPane.showMessageDialog(null, "You cannot have a negative number of Creatures.", "Centered Message", JOptionPane.INFORMATION_MESSAGE);
                 }
-
             });
         }
 
@@ -388,14 +387,12 @@ public class Main {
             panelGraveTracker.add(btnCreaturePlusGT[i]);
 
             int index = i;
+            // Creature plus buttons
             btnCreaturePlusGT[i].addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    int creatureCount = Integer.parseInt(lblCreatureCount[index].getText());
-                    //Prevents Creature Count from going over 100 and throws an error message when a user attempts to increase the count beyond 100.
-                    if (creatureCount < 100) {
-                        lblCreatureCount[index].setText(String.valueOf(creatureCount + 1));
-                    }
-                    if (creatureCount == 100) {
+                    players[index].incrementCreatures();
+                    lblCreatureCount[index].setText(String.valueOf(players[index].getCreatures()));
+                    if (players[index].getCreatures() == 100) {
                         JOptionPane.showMessageDialog(null, "You cannot have more than 100 creatures.", "Centered Message", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
@@ -414,8 +411,8 @@ public class Main {
             panelGraveTracker.add(btnResetCreaturesGT[i]);
             int index = i;
             btnResetCreaturesGT[i].addActionListener(e -> {
+                players[index].resetCreatures();
                 lblCreatureCount[index].setText("0");
-
             });
         }
 
@@ -427,13 +424,13 @@ public class Main {
         btnResetAllCreaturesGT.setBackground(Color.BLACK);
         btnResetAllCreaturesGT.setBounds(323, 500, 170, 35);
         panelGraveTracker.add(btnResetAllCreaturesGT);
-        for (int i = 0; i < lblCreatureCount.length; i++) {
-            int index = i;
-            btnResetAllCreaturesGT.addActionListener(e -> {
-                lblCreatureCount[index].setText("0");
+        btnResetAllCreaturesGT.addActionListener(e -> {
+            for (int i = 0; i < players.length; i++) {
+                players[i].resetCreatures();
+                lblCreatureCount[i].setText("0");
+            }
+        });
 
-            });
-    }
 
 
         //Total minus buttons
@@ -449,12 +446,9 @@ public class Main {
 
             int index = i;
             btnTotalMinusGT[i].addActionListener(e -> {
-                int totalCount = Integer.parseInt(lblTotalCountGT[index].getText());
-                //Prevents the Total Count from going below 0 and throws an error message if the user attempts to decrease the Total Count below 0
-                if (totalCount > 0) { // Prevent negative numbers
-                    lblTotalCountGT[index].setText(String.valueOf(totalCount - 1));
-                }
-                if (totalCount == 0) {
+                players[index].decrementTotalCards();
+                lblTotalCountGT[index].setText(String.valueOf(players[index].getTotalCards()));
+                if (players[index].getTotalCards() == 0) {
                     JOptionPane.showMessageDialog(null, "You cannot have a negative number of cards.", "Centered Message", JOptionPane.INFORMATION_MESSAGE);
                 }
             });
@@ -486,12 +480,9 @@ public class Main {
 
             int index = i;
             btnTotalPlusGT[i].addActionListener(e -> {
-                int totalCount = Integer.parseInt(lblTotalCountGT[index].getText());
-                //Allows the user to increment the Total amount by 1 as long as the Total count is less than 0 and shows a dialog box when a user attempts to raise the count above 100.
-                if (totalCount < 100) {
-                    lblTotalCountGT[index].setText(String.valueOf(totalCount + 1));
-                }
-                if (totalCount == 100) {
+                players[index].incrementTotalCards();
+                lblTotalCountGT[index].setText(String.valueOf(players[index].getTotalCards()));
+                if (players[index].getTotalCards() == 100) {
                     JOptionPane.showMessageDialog(null, "You cannot have more than 100 cards.", "Centered Message", JOptionPane.INFORMATION_MESSAGE);
                 }
             });
@@ -509,8 +500,8 @@ public class Main {
             panelGraveTracker.add(btnResetTotalGT[i]);
             int index = i;
             btnResetTotalGT[i].addActionListener(e -> {
+                players[index].resetTotalCards();
                 lblTotalCountGT[index].setText("0");
-
             });
         }
 
@@ -522,13 +513,12 @@ public class Main {
         btnResetAllTotalGT.setBackground(Color.BLACK);
         btnResetAllTotalGT.setBounds(673, 500, 170, 35);
         panelGraveTracker.add(btnResetAllTotalGT);
-        for (int i = 0; i < lblTotalCountGT.length; i++) {
-            int index = i;
-            btnResetAllTotalGT.addActionListener(e -> {
-                lblTotalCountGT[index].setText("0");
-
-            });
-        }
+        btnResetAllTotalGT.addActionListener(e -> {
+            for (int i = 0; i < players.length; i++) {
+                players[i].resetTotalCards();
+                lblTotalCountGT[i].setText("0");
+            }
+        });
 
         //Button that resets the state of all labels and checkboxes to their default state of either 0 for labels or unchecked for the checkboxes.
         btnResetEverythingGT = new JButton("btnResetEverythingGT");
@@ -721,6 +711,8 @@ public class Main {
             panelLifeTracker.add(btnResetLife[i]);
             int index = i;
             btnResetLife[i].addActionListener(e -> {
+                String mode = lblStartingLife.getText().equals("40") ? "Commander" : "Standard";
+                players[index].resetLife(mode);
                 lblPlayerLife[index].setText(lblStartingLife.getText());
             });
         }
@@ -734,8 +726,10 @@ public class Main {
         btnResetAllLife.setText("<html>Reset<br />All</html>");
         panelLifeTracker.add(btnResetAllLife);
         btnResetAllLife.addActionListener(e -> {
-            for(JLabel s : lblPlayerLife) {
-                s.setText(lblStartingLife.getText());
+            String mode = lblStartingLife.getText().equals("40") ? "Commander" : "Standard";
+            for (int i = 0; i < players.length; i++) {
+                players[i].resetLife(mode);
+                lblPlayerLife[i].setText(lblStartingLife.getText());
             }
         });
 
@@ -783,8 +777,15 @@ public class Main {
     // Method to update visibility
     private void updateVisibility(int playerCount, JPanel panelToHide, JPanel panelToShow) {
         for (int i = 0; i < playerCount; i++) {
-             playerLabelsGT[i].setText(txtArray[i].getText());
-            playerLabelsLT[i].setText(txtArray[i].getText());
+            // IMPORTANT: Update the Player object's name from the text field first
+            players[i].setName(txtArray[i].getText());
+
+            // Then update the labels with the new name
+            playerLabelsGT[i].setText(players[i].getName());
+            playerLabelsLT[i].setText(players[i].getName());
+            lblCreatureCount[i].setText(String.valueOf(players[i].getCreatures()));
+            lblTotalCountGT[i].setText(String.valueOf(players[i].getTotalCards()));
+            lblPlayerLife[i].setText(String.valueOf(players[i].getLife()));
             playerLabelsGT[i].setVisible(true);
             playerLabelsLT[i].setVisible(true);
             btnCreatureMinusGT[i].setVisible(true);
